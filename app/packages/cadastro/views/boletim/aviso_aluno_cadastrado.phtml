@@ -1,0 +1,35 @@
+﻿<?php /*	
+=========================================================================================	
+|	PÁGINA DE CONSULTA DE FICHA DO CADASTRO
+|   EXIBE UM REGISTRO PARA CONSULTA OU EXCLUSÃO
+=========================================================================================	
+*/ 
+
+	$FW_tabela = "boletim";	
+		
+		echo "<H1>AVISO: <B>O BOLETIM DESTE ALUNO JÁ ESTÁ CADASTRADO!</B></H1><BR>";
+		echo "<br>";
+		
+	// VETOR COM OS NOMES DAS COLUNAS DA TABELA E OS RESPECTIVOS CAMPOS
+	global $start;
+	include(FW_PATH_SERV . FW_RAIZ. FW_VIEWS . $start->_controller ."/blocks/cabCampo.php");	//	INCLUI O ARQUIVO COM CABEÇALHOS E CAMPOS
+		
+	// PARA EXCLUIR ALGUM CAMPO DA VISUALIZAÇÃO USE:
+	$excluir = array();
+	// $excluir = array("id","email","cpf");
+	$FW_cab = $start->ExcluirCampo($FW_campos, $excluir );
+	
+// PREPARANDO O CAMPOS RELACIONADOS PARA SEREM APRESENTADOS  
+	$lista_alunos = new alunosModel();	//	Acessando o Modelo de dados dos alunos
+	for ($ct=0;$ct<count($view_show_registro);$ct++) { 
+		$temp = $lista_alunos->alunosShow("id=".$view_show_registro[$ct]['aluno_id']);
+		$view_show_registro[$ct]['aluno_id'] = $view_show_registro[$ct]['aluno_id'] . " - " . $temp[0]['aluno'];
+	}	
+	
+	// apresentando boletim, nota final	
+	include_once(FW_PATH_SERV . FW_SCAF_BLOCKS . "scafTableRegShow.php");							//	CHAMA O BLOCO DE CÓDIGO QUE MOSTRA O REGISTRO
+
+
+	include_once(FW_PATH_SERV . FW_SCAF_BLOCKS . "scafBotaoConfirmaConsultaExclusao.php");			//	BOTAO CONFIRMA CONSULTA EXCLUSAO
+?>
+

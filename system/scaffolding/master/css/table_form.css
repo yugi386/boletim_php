@@ -1,0 +1,77 @@
+/*
+====================================================================================================================================
+	ARQUIVO CSS PARA A FORMATACAO DO FORMULARIO DE PESQUISA PADRAO E DA TABELA DE APRESENTACAO DE DADOS NA INDEX DO CADASTRO
+	VERSAO: 1.0.0
+	DATA: 30/03/2012
+====================================================================================================================================
+*/
+
+	/* CONTROLE DO LAYOUT DO FORMULARIO DE PESQUISA */
+	
+		form{
+		  background-color:#f2f2f2;
+		  width:600px;
+		  margin:10px 0 10px 0;
+		  text-align:center;
+		}
+
+		form p{
+		  padding:12px;
+		}
+
+		form p label{
+		  color:#333;
+		  font-weight:900;
+		}
+
+		form input{
+		  padding:6px;
+		  border:1px solid #ccc;
+		  width:180px;
+		}
+
+		/* CONTROLA O LAYOUT DA TABELA DE APRESENTACAO DA INDEX */	
+		
+		table{
+		  width:600px;
+		  border:1px solid #ccc;
+		}
+
+		table thead th{
+		  background-color:#ad2525;
+		  padding:6px;
+		  color:#fff;
+		  text-align:center;
+		  font-size:14px;
+		}
+
+		table thead th.header{
+		  cursor:pointer;
+		}
+
+		table tbody td{
+		  padding:6px;
+		  text-align:center;
+		  color:#333;
+		}
+
+		table tbody tr.odd td{
+		  background-color:#ffffcc;
+		}
+
+		table tbody tr.hover td{
+		  background-color:#a9d0f5;
+		}
+
+		table tbody tr.selected td{
+		  background-color:#a9f5a9!important;
+		}
+
+		/* CONTROLA DE EFEITO DE FUNDO DA TABELA */	
+		
+		.celula {
+			background-color:white;
+		}
+		.celulahover {
+			background-color: #C6E2FF;
+		}

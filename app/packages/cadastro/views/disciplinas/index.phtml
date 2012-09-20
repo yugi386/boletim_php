@@ -1,0 +1,32 @@
+﻿<?php /*	
+==========================================================================	
+|	PÁGINA PRINCIPAL DO CADASTRO - LISTAGEM DE REGISTROS
+==========================================================================	
+*/ ?>
+<link href="<?php echo FW_SCAF_CSS; ?>table_form.css" rel="stylesheet" type="text/css" media="screen" />	<!-- CSS DA TABELA E DO FORMULARIO DE PESQUISA -->
+
+	<H1>DISCIPLINAS CADASTRADAS</H1>
+
+	<?php 
+		$FW_tabela = 'disciplinas';																//  NOME DA TABELA PARA A ROTINA GENERICA DE PESQUISA
+		include(FW_PATH_SERV . FW_RAIZ . FW_VIEWS . $FW_tabela . "/blocks/cabCampo.php");	//	CABECALHO E ROTULOS DOS CAMPOS DA TABELA
+		
+		$FW_scaf = $FW_campos;	//	Vetor para mostrar pesquisa no formulario de pesquisa superior, pode ter elementos apagados.		
+		
+		// encurtando as tags de pesquisa para caber no select...
+		/*
+		$FW_scaf['TEL. RESIDENCIAL'] = $FW_campos['TELEFONE RESIDENCIAL'];
+		unset($FW_scaf['TELEFONE RESIDENCIAL']);
+		*/
+		
+		include_once(FW_PATH_SERV . FW_SCAF_FORM . "scafPesq.php");								//	FORMULARIO DE PESQUISA PADRAO SCAFFOLDING
+		
+		// VETOR COM OS NOMES DAS COLUNAS DA TABELA E OS RESPECTIVOS CAMPOS
+		$FW_cab = array("ID" => "id",
+						"DISCIPLINA" => "disciplina",
+		);
+
+		include_once(FW_PATH_SERV . FW_SCAF_BLOCKS . "scafTableDisplay.php");	//	CHAMA O BLOCO DE CÓDIGO QUE MOSTRA A TABELA DE LISTAGEM DE DADOS
+		include_once(FW_PATH_SERV . FW_SCAF_BLOCKS . "scafPaginacao.php");	//	CHAMA O BLOCO DE CÓDIGO QUE MOSTRA A TABELA DE LISTAGEM DE DADOS
+		include_once(FW_PATH_SERV . FW_SCAF_BLOCKS . "scafBotaoNovoReg.php");	//	BOTAO PARA INCLUIR NOVO REGISTRO
+	?>

@@ -1,0 +1,38 @@
+<?php /*	
+==========================================================================	
+|	PÁGINA PRINCIPAL DO CADASTRO - LISTAGEM DE REGISTROS
+==========================================================================	
+*/ ?>
+<link href="<?php echo FW_SCAF_CSS; ?>table_form.css" rel="stylesheet" type="text/css" media="screen" />	<!-- CSS DA TABELA E DO FORMULARIO DE PESQUISA -->
+
+	<H1>NOTAS CADASTRADAS</H1>
+
+	<?php 
+		$FW_tabela = 'notas';										//  NOME DA TABELA PARA A ROTINA GENERICA DE PESQUISA
+		include_once(FW_PATH_SERV . FW_RAIZ . FW_VIEWS . $FW_tabela . "/blocks/cabCampo.php");	//	CABECALHO E ROTULOS DOS CAMPOS DA TABELA
+		$FW_scaf = $FW_campos;	//	Vetor para mostrar pesquisa no formulario de pesquisa superior, pode ter elementos apagados.						
+		include_once(FW_PATH_SERV . FW_SCAF_FORM . "scafPesq.php");								//	FORMULARIO DE PESQUISA PADRAO SCAFFOLDING
+		
+		// VETOR COM OS NOMES DAS COLUNAS DA TABELA E OS RESPECTIVOS CAMPOS
+		$FW_cab = array("ID" => "id",
+						"ALUNO" => "aluno_id",
+						"DISCIPLINA" => "disciplina_id"
+			);
+
+	// PREPARANDO O CAMPOS RELACIONADOS PARA SEREM APRESENTADOS  
+	$lista_alunos = new alunosModel();	//	Acessando o Modelo de dados dos alunos
+	for ($ct=0;$ct<count($view_lista_registros);$ct++) { 
+		$temp = $lista_alunos->alunosShow("id=".$view_lista_registros[$ct]['aluno_id']);
+		$view_lista_registros[$ct]['aluno_id'] = $view_lista_registros[$ct]['aluno_id'] . " - " . $temp[0]['aluno'];
+	}
+	
+	$lista_disciplinas = new disciplinasModel();	//	Acessando o Modelo de dados das disciplinas
+	for ($ct=0;$ct<count($view_lista_registros);$ct++) { 
+		$temp = $lista_disciplinas->disciplinasShow("id=".$view_lista_registros[$ct]['disciplina_id']);
+		$view_lista_registros[$ct]['disciplina_id'] = $view_lista_registros[$ct]['disciplina_id'] . " - " . $temp[0]['disciplina'];
+	}
+	
+		include_once(FW_PATH_SERV . FW_SCAF_BLOCKS . "scafTableDisplay.php");	//	CHAMA O BLOCO DE CÓDIGO QUE MOSTRA A TABELA DE LISTAGEM DE DADOS
+		include_once(FW_PATH_SERV . FW_SCAF_BLOCKS . "scafPaginacao.php");	//	CHAMA O BLOCO DE CÓDIGO QUE MOSTRA A TABELA DE LISTAGEM DE DADOS
+		include_once(FW_PATH_SERV . FW_SCAF_BLOCKS . "scafBotaoNovoReg.php");	//	BOTAO PARA INCLUIR NOVO REGISTRO
+	?>

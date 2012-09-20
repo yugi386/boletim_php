@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Boldness   
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20120422
+-->
+
+<?php global $FW_LAYOUT, $FW_PATH_LAYOUT ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>ESCOLA</title>
+<link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="<?php echo FW_PATH_LAYOUT; ?>jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="<?php echo FW_PATH_LAYOUT; ?>jquery.slidertron-1.0.js"></script>
+	<link href="<?php echo FW_PATH_LAYOUT; ?>style.css" rel="stylesheet" type="text/css" media="screen" />
+	<script src="<?php echo FW_SCAF_JAVASCRIPT; ?>jquery.js"></script>
+	<script src="<?php echo FW_SCAF_JAVASCRIPT; ?>jquery.tablesorter.min.js"></script>
+	<script src="<?php echo FW_SCAF_JAVASCRIPT; ?>jquery.tablesorter.pager.js"></script>
+	<script src="<?php echo FW_SCAF_JAVASCRIPT; ?>sorttable.js"></script>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header-wrapper">
+		<div id="header">
+			<div id="logo">
+				<h1><a href="#">CONTROLE DE DISCIPLINAS</a></h1>
+				<!-- <p>template design by <a href="http://www.freecsstemplates.org/">CSS Templates</a></p> -->
+				<p>Média de Alunos</p>
+			</div>
+		</div>
+	</div>
+	<!-- end #header -->
+	<div id="menu">
+		<ul>
+			<li class="current_page_item"><a href="<?php echo FW_RAIZ;?>cadastro/alunos">Início</a></li>
+		</ul>
+	</div>
+	<!-- end #menu -->
+	<div id="page">
+		<div id="content">
+			<div id="slider">
+			</div>
+
+			<!-- <div class="post"> -->
+				<!-- Neste código chamamos a VIEW que está na pasta VIEWS/NOME DO CONTROLADOR/ACTION -->
+				<?php require_once(FW_VIEWS. "/". $this->_controller. "/". $nome. '.phtml'); ?>
+			<!-- </div> -->
+
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+		
+		<!-- end #content -->
+		<div id="sidebar-bg">
+			<div id="sidebar">
+				<ul>
+					<li>
+						<h2>Menu</h2>
+						<p>
+							Alunos e Disciplinas
+						</p>
+						
+						<p>
+						Abaixo você pode acessar os cadastros do sistema.
+						</p>
+						
+					</li>
+					<li>
+						<h2>Cadastros</h2>
+						<ul>
+							<?php	// Menu de Opções....
+								echo '<li><a href="'.FW_RAIZ.'cadastro/alunos">Alunos</a></li>';
+								echo '<li><a href="'.FW_RAIZ.'cadastro/disciplinas">Disciplinas</a></li>';
+								echo '<li><a href="'.FW_RAIZ.'cadastro/notas">Notas</a></li>';
+								echo '<li><a href="'.FW_RAIZ.'cadastro/boletim">Boletim</a></li>';
+							?>
+						</ul>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+		<!-- end #sidebar -->
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+	<!-- end #page -->
+</div>
+<div id="footer">
+	<!-- <p><a href="http://www.webverissimo.hd1.com.br" target="_BLANK">Webverissimo</a></p> -->
+	<p>Exercício INPE</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>

@@ -1,0 +1,25 @@
+<?php /*	
+==========================================================================	
+|	PÁGINA DE INCLUIR OU ALTERAR UMA FICHA DO CADASTRO
+==========================================================================	
+*/
+	if ($view_tipo == '1') {						//	INCLUSAO
+		echo "<H1>INCLUIR REGISTRO DE ALUNO</H1>";
+		$FW_operacao =  $view_redir . "incluir/"; 		//	VALOR PARA SETAR OPERACAO A SER FEITA...
+	
+	} else if ($view_tipo == '2') {					//	ALTERACAO
+		echo "<H1>ALTERAR REGISTRO DE ALUNO</H1>";		
+		$FW_operacao =  $view_redir . "alterar/id/".$view_show_registro[0]['id']."/"; 		//	VALOR PARA SETAR OPERACAO A SER FEITA...
+	}	
+
+	
+	// DECLARANDO CAMPOS ESPECIAIS:
+	// ESTA VARIAVEL INDICA OS CAMPOS CHECKBOX DO FORMULARIO	
+	$FW_checkbox = array();
+	// $FW_checkbox = array( 'bloqueado' => 'S');	// Isto diz o sistema que 'S' equivale ao checkbox marcado.
+	// ESTA VARIAVEL INDICA OS CAMPOS SELECT DO FORMULARIO		
+	$FW_select = array();
+	$FW_select = array(0 => 'sexo');	// estes campos devem ser preenchidos na ordem em que aparecem no formulario preferencialmente (já há funcao para ordena-los)
+					   	
+	include("forms/formulario.php");				//	FORMULARIO DE ENTRADA DE DADOS
+?>

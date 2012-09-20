@@ -1,0 +1,35 @@
+﻿<?php /*	
+=========================================================================================	
+|	PÁGINA DE CONSULTA DE FICHA DO CADASTRO
+|   EXIBE UM REGISTRO PARA CONSULTA OU EXCLUSÃO
+=========================================================================================	
+*/ 
+
+	$FW_tabela = "alunos";	
+		
+		echo "<H1>AVISO: <B>ESTE REGISTRO NÃO PODE SER EXCLUIDO</B></H1><BR>";
+		// echo "<br>";
+		echo "<H3>EXISTEM NOTAS REFERENTES A ESTE ALUNO!</H3>";
+		echo "<br>";
+		
+	// VETOR COM OS NOMES DAS COLUNAS DA TABELA E OS RESPECTIVOS CAMPOS
+	global $start;
+	include_once(FW_PATH_SERV . FW_RAIZ. FW_VIEWS . $start->_controller ."/blocks/cabCampo.php");	//	INCLUI O ARQUIVO COM CABEÇALHOS E CAMPOS
+		
+	// PARA EXCLUIR ALGUM CAMPO DA VISUALIZAÇÃO USE:
+	$excluir = array();
+	// $excluir = array("id","email","cpf");
+	$FW_cab = $start->ExcluirCampo($FW_campos, $excluir );
+
+	// convertendo siglas para nomes e valores
+	// Adaptando informações para apresentação
+	$converte = new usuariosHelper();	//	Helper de conversoes
+	$view_show_registro[0]['sexo'] = $converte->genero($view_show_registro[0]['sexo']);
+	$view_show_registro[0]['estado'] = $converte->estados($view_show_registro[0]['estado']);	
+	
+	include_once(FW_PATH_SERV . FW_SCAF_BLOCKS . "scafTableRegShow.php");							//	CHAMA O BLOCO DE CÓDIGO QUE MOSTRA O REGISTRO
+	
+?>
+
+<BR>
+<a href="<?php echo FW_RAIZ  . $view_redir ;?>index"><img src="<?php echo FW_SCAF_IMAGE; ?>voltar.png" width="128" height="64" border="0"></a>

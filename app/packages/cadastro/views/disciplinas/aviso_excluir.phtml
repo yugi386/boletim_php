@@ -1,0 +1,29 @@
+﻿<?php /*	
+=========================================================================================	
+|	PÁGINA DE CONSULTA DE FICHA DO CADASTRO
+|   EXIBE UM REGISTRO PARA CONSULTA OU EXCLUSÃO
+=========================================================================================	
+*/ 
+
+	$FW_tabela = "disciplinas";	
+		
+		echo "<H1>AVISO: <B>ESTE REGISTRO NÃO PODE SER EXCLUIDO</B></H1><BR>";
+		// echo "<br>";
+		echo "<H3>HÁ REFERÊNCIAS DE NOTAS COM ESTA DISCIPLINA!</H3>";
+		echo "<br>";
+		
+	// VETOR COM OS NOMES DAS COLUNAS DA TABELA E OS RESPECTIVOS CAMPOS
+	global $start;
+	include_once(FW_PATH_SERV . FW_RAIZ. FW_VIEWS . $start->_controller ."/blocks/cabCampo.php");	//	INCLUI O ARQUIVO COM CABEÇALHOS E CAMPOS
+		
+	// PARA EXCLUIR ALGUM CAMPO DA VISUALIZAÇÃO USE:
+	$excluir = array();
+	// $excluir = array("id","email","cpf");
+	$FW_cab = $start->ExcluirCampo($FW_campos, $excluir );
+	
+	include_once(FW_PATH_SERV . FW_SCAF_BLOCKS . "scafTableRegShow.php");							//	CHAMA O BLOCO DE CÓDIGO QUE MOSTRA O REGISTRO
+	
+?>
+
+<BR>
+<a href="<?php echo FW_RAIZ  . $view_redir ;?>index"><img src="<?php echo FW_SCAF_IMAGE; ?>voltar.png" width="128" height="64" border="0"></a>
